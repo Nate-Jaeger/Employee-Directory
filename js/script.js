@@ -9,3 +9,9 @@ const users = fetch(randomUserURL)
 	.then(data =>{createUserCard(data.results);
 					  createModal(data.results)})
 	.catch(error => console.error(error));
+
+	/* TODO
+		-create Modal function to make/append html with proper user data
+		-add event listeners to .cards elements
+		-make Modal window display when a card is clicked
+	*/
