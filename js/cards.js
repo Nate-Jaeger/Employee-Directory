@@ -21,8 +21,27 @@ const createUserCard = array => {
 	});
 }
 
+//Create modal cards for all users, sets display to none
 const createModal = array => {
 	array.map( user => {
-		console.log(user)
+		let DOB = user.dob.date;
+		let html = `
+		<div class="modal-container" style="display:none">
+			<div class="modal">
+				<button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
+				<div class="modal-info-container">
+					<img class="modal-img" src="${user.picture.large}" alt="profile picture">
+					<h3 id="name" class="modal-name cap">${user.name.first} ${user.name.last}</h3>
+					<p class="modal-text">${user.email}</p>
+					<p class="modal-text cap">${user.location.city}</p>
+					<hr>
+					<p class="modal-text">${user.cell}</p>
+					<p class="modal-text">${user.location.street.number} ${user.location.street.name}, ${user.location.city}, ${user.location.state} ${user.location.postcode}</p>
+					<p class="modal-text">Birthday: ${DOB}</p>
+				</div>
+			</div>
+		</div>`;
+		
+		body.insertAdjacentHTML('beforeend', html);
 	});
 }
