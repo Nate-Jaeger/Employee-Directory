@@ -1,4 +1,4 @@
-const randomUserURL = 'https://randomuser.me/api/?results=12';
+const randomUserURL = 'https://randomuser.me/api/?results=12&nat=us';
 const galleryDiv = document.getElementById('gallery');
 const body = document.getElementsByTagName('body')[0];
 
