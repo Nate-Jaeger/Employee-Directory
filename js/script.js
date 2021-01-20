@@ -11,8 +11,13 @@ const users = fetch(randomUserURL)
 					  createModal(data.results)})
 	.catch(error => console.error(error));
 
-	/* TODO
-		-create Modal function to make/append html with proper user data
-		-add event listeners to .cards elements
-		-make Modal window display when a card is clicked
-	*/
+/* TODO
+	-make Modal window display when a card is clicked
+*/
+//Only fire if click is not on the gallery 
+ galleryDiv.addEventListener('click', e => {
+	 if( e.target.className !== 'gallery'){
+		
+	 }
+ });
+

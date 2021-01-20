@@ -42,7 +42,7 @@ const createModal = array => {
 				</div>
 			</div>
 		</div>`;
-		console.log(DOB);
+		
 		body.insertAdjacentHTML('beforeend', html);
 	});
 }
