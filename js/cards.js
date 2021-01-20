@@ -24,7 +24,8 @@ const createUserCard = array => {
 //Create modal cards for all users, sets display to none
 const createModal = array => {
 	array.map( user => {
-		let DOB = user.dob.date;
+		//Format birthday info into MM/DD/YYYY
+		let DOB = new Date(user.dob.date).toLocaleDateString();
 		let html = `
 		<div class="modal-container" style="display:none">
 			<div class="modal">
@@ -41,7 +42,7 @@ const createModal = array => {
 				</div>
 			</div>
 		</div>`;
-		
+		console.log(DOB);
 		body.insertAdjacentHTML('beforeend', html);
 	});
 }
