@@ -20,9 +20,7 @@ const users = fetch(randomUserURL)
   const grandparent = e.target.parentElement.parentElement;
 
 	 if(target.className !== 'gallery'){
-		
-		
-		//Check if target||parent||grandparent have the 'card' class. Use number class to display appropriate Modal
+		//Check if target, parent, grandparent have the 'card' class. Use number class to display appropriate Modal
 		if (target.classList.contains('card')) {
 			allModals[target.classList[1]].style.display = '';
 		}
@@ -32,19 +30,5 @@ const users = fetch(randomUserURL)
 		else if (grandparent.classList.contains('card')) {
 			allModals[grandparent.classList[1]].style.display = '';
 		}
-		console.log(target.className)
 	 };
-	
-	 //IF e.target.tagName == STRONG, close window
-	 if (target.className === 'modal-close-btn' || parent.className === 'modal-close-btn') {
-		 console.log('Found it')
-	 }
 });
-
-
-
-/* 
- Event listener to each card element
-	 each event listener returns number 
-	 number used to pull data from allModals array
-*/
