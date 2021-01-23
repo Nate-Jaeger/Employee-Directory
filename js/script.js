@@ -10,18 +10,33 @@ const users = fetch(randomUserURL)
 					  createModal(data.results)})
 	.catch(error => console.error(error));
 
-/* TODO
-	-make Modal window display when a card is clicked
-	---How?
-*/
-//Only fire if click is not on the gallery 
+
+//Event only fires if click is not on the gallery element 
  galleryDiv.addEventListener('click', e => {
 	 if( e.target.className !== 'gallery'){
-		 //Select all cards and modals and store them in seperate variables
-		const allCards = document.querySelectorAll('.card');
 		const allModals = document.querySelectorAll('.modal-container');
-		console.log(allCards[9].classList[1]);
-		console.log(e.target);
-	 }
- });
+		 //Select class names of target and parent elements
+		const target = e.target;
+		const parent = e.target.parentElement;
+		const grandparent = e.target.parentElement.parentElement;
+		
+		//Check if target||parent||grandparent have the 'card' class. Use number class to display appropriate Modal
+		if (target.classList.contains('card')) {
+			allModals[target.classList[1]].style.display = '';
+		}
+		else if (parent.classList.contains('card')) {
+			allModals[parent.classList[1]].style.display = '';
+		}
+		else if (grandparent.classList.contains('card')) {
+			allModals[grandparent.classList[1]].style.display = '';
+		}
+	 };
+	
+	 //IF e.target.tagName == STRONG, close window
+});
 
+/* 
+ Event listener to each card element
+	 each event listener returns number 
+	 number used to pull data from allModals array
+*/
