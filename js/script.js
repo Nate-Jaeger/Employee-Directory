@@ -11,10 +11,9 @@ const users = fetch(randomUserURL)
 	.catch(error => console.error(error));
 
 
-//Listener on galleryDiv to listen for multiple click events 
+//Listener on galleryDiv to listen for click on any part of a card. Displays proper modal 
  galleryDiv.addEventListener('click', e => {
-	const allModals = document.querySelectorAll('.modal-container');
-	//Select class names of target and parent elements
+  const allModals = document.querySelectorAll('.modal-container');
   const target = e.target;
   const parent = e.target.parentElement;
   const grandparent = e.target.parentElement.parentElement;
@@ -31,4 +30,17 @@ const users = fetch(randomUserURL)
 			allModals[grandparent.classList[1]].style.display = '';
 		}
 	 };
+});
+
+//Listener on the body
+//Check what tagnames or class names are 
+body.addEventListener('click', e => {
+	const target = e.target;
+	const parent = e.target.parentElement;
+	if (parent.tagName === 'BUTTON') {
+		parent.parentElement.parentElement.style.display = 'none';
+	}
+	else if (target.tagName === 'BUTTON'){
+		parent.parentElement.style.display = 'none';
+	}
 });
