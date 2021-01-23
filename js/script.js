@@ -11,14 +11,16 @@ const users = fetch(randomUserURL)
 	.catch(error => console.error(error));
 
 
-//Event only fires if click is not on the gallery element 
+//Listener on galleryDiv to listen for multiple click events 
  galleryDiv.addEventListener('click', e => {
-	 if( e.target.className !== 'gallery'){
-		const allModals = document.querySelectorAll('.modal-container');
-		 //Select class names of target and parent elements
-		const target = e.target;
-		const parent = e.target.parentElement;
-		const grandparent = e.target.parentElement.parentElement;
+	const allModals = document.querySelectorAll('.modal-container');
+	//Select class names of target and parent elements
+  const target = e.target;
+  const parent = e.target.parentElement;
+  const grandparent = e.target.parentElement.parentElement;
+
+	 if(target.className !== 'gallery'){
+		
 		
 		//Check if target||parent||grandparent have the 'card' class. Use number class to display appropriate Modal
 		if (target.classList.contains('card')) {
@@ -30,10 +32,16 @@ const users = fetch(randomUserURL)
 		else if (grandparent.classList.contains('card')) {
 			allModals[grandparent.classList[1]].style.display = '';
 		}
+		console.log(target.className)
 	 };
 	
 	 //IF e.target.tagName == STRONG, close window
+	 if (target.className === 'modal-close-btn' || parent.className === 'modal-close-btn') {
+		 console.log('Found it')
+	 }
 });
+
+
 
 /* 
  Event listener to each card element
