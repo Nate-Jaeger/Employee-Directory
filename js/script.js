@@ -2,7 +2,9 @@ const randomUserURL = 'https://randomuser.me/api/?results=12&nat=us';
 const galleryDiv = document.getElementById('gallery');
 const body = document.getElementsByTagName('body')[0];
 let modals;
+let cards;
 let activeModal;
+let clickedCard;
 
 //Call to grab 12 random users
 //Call to create User Cards with returned data
@@ -16,6 +18,7 @@ const users = fetch(randomUserURL)
 //Listen for click on any part of a card. Displays proper modal 
  galleryDiv.addEventListener('click', e => {
   modals = document.querySelectorAll('.modal-container');
+  cards = document.querySelectorAll('.card');
   const target = e.target;
   const parent = e.target.parentElement;
   const grandparent = e.target.parentElement.parentElement;
@@ -25,14 +28,17 @@ const users = fetch(randomUserURL)
 		if (target.classList.contains('card')) {
 			modals[target.classList[1]].style.display = '';
 			activeModal = modals[target.classList[1]];
+			clickedCard = target;
 		}
 		else if (parent.classList.contains('card')) {
 			modals[parent.classList[1]].style.display = '';
 			activeModal = modals[parent.classList[1]];
+			clickedCard = parent;
 		}
 		else if (grandparent.classList.contains('card')) {
 			modals[grandparent.classList[1]].style.display = '';
 			activeModal = modals[grandparent.classList[1]];
+			clickedCard = grandparent;
 		}
 	 };
 });
@@ -40,14 +46,31 @@ const users = fetch(randomUserURL)
 //Listener on the body used for clicks on Modal window
 body.addEventListener('click', e => {
 	const target = e.target;
+	//Get the index number from the clicked cards classList
+	let indexNumber = parseInt(clickedCard.classList[1]);
+
 		//Check if the 'close window' button was clicked
 	if (target.tagName === 'STRONG' || target.className === 'modal-close-btn') {
 		activeModal.style.display = 'none';
 	}
+
+		//Check if 'prev' was clicked. Then hide/show appropriate modals
 	if (target.className === 'modal-prev btn') {
-		console.log('PREVIOUS');
+		if(indexNumber !== 0) {
+			activeModal.style.display = 'none';
+			modals[indexNumber - 1].style.display = '';
+			activeModal = modals[indexNumber - 1];
+			clickedCard = cards[indexNumber - 1];
+		}
 	}
+
+		//Check if 'next' was clicked. Then hide/show appropriate modals
 	if (target.className === 'modal-next btn') {
-		console.log('NEXT');
+		if(indexNumber !== modals.length - 1) {
+			activeModal.style.display = 'none';
+			modals[indexNumber + 1].style.display = '';
+			activeModal = modals[indexNumber + 1];
+			clickedCard = cards[indexNumber + 1];
+		}
 	}
 });
