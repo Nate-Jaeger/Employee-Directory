@@ -1,3 +1,5 @@
+
+const namesArray = [];
 /* <------------------->
 	CARD/MODAL FUNCTIONS
 	<-------------------> */
@@ -20,6 +22,7 @@ const createUserCard = array => {
 		</div>`;
 			
 		galleryDiv.insertAdjacentHTML('beforeend', html);
+		namesArray.push(`${user.name.first} ${user.name.last}`);
 		++i;
 	});
 }
@@ -52,7 +55,7 @@ const createModal = array => {
          </div>
 		</div>`;
 	
-		galleryDiv.insertAdjacentHTML('beforeend', html);
+		body.insertAdjacentHTML('beforeend', html);
 	});
 }
 
@@ -61,4 +64,5 @@ const searchBar = `<form action="#" method="get">
 <input type="search" id="search-input" class="search-input" placeholder="Search...">
 <input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">
 </form>`;
-document.querySelector('.search-container').insertAdjacentHTML('afterbegin', searchBar);
+const searchContainer = document.querySelector('.search-container');
+searchContainer.insertAdjacentHTML('afterbegin', searchBar);

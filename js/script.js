@@ -1,6 +1,8 @@
 const randomUserURL = 'https://randomuser.me/api/?results=12&nat=us';
 const galleryDiv = document.getElementById('gallery');
 const body = document.getElementsByTagName('body')[0];
+const form = document.getElementsByTagName('form')[0];
+//Defined in gallery event listener
 let modals;
 let cards;
 let activeModal;
@@ -17,8 +19,6 @@ const users = fetch(randomUserURL)
 
 //Listen for click on any part of a card. Displays proper modal 
  galleryDiv.addEventListener('click', e => {
-  modals = document.querySelectorAll('.modal-container');
-  cards = document.querySelectorAll('.card');
   const target = e.target;
   const parent = e.target.parentElement;
   const grandparent = e.target.parentElement.parentElement;
@@ -43,36 +43,48 @@ const users = fetch(randomUserURL)
 	 };
 });
 
+
 //Listener on the body used for clicks on Modal window
 body.addEventListener('click', e => {
-	const target = e.target;
-	//Get the index number from the clicked cards classList
-	let indexNumber = parseInt(clickedCard.classList[1]);
+	modals = document.querySelectorAll('.modal-container');
+	cards = document.querySelectorAll('.card');
+	//Ignore click on the search input element
+	if (e.target.tagName !== 'INPUT'){
+		const target = e.target;
+		//Get the index number from the clicked cards classList
+		let indexNumber = parseInt(clickedCard.classList[1]);
 
-		//Check if the 'close window' button was clicked
-	if (target.tagName === 'STRONG' || target.className === 'modal-close-btn') {
-		activeModal.style.display = 'none';
-	}
-
-		//Check if 'prev' was clicked. Then hide/show appropriate modals
-	if (target.className === 'modal-prev btn') {
-		if(indexNumber !== 0) {
-			indexNumber -= 1;
+			//Check if the 'close window' button was clicked
+		if (target.tagName === 'STRONG' || target.className === 'modal-close-btn') {
 			activeModal.style.display = 'none';
-			modals[indexNumber].style.display = '';
-			activeModal = modals[indexNumber];
-			clickedCard = cards[indexNumber];
+		}
+
+			//Check if 'prev' was clicked. Then hide/show appropriate modals
+		if (target.className === 'modal-prev btn') {
+			if(indexNumber !== 0) {
+				indexNumber -= 1;
+				activeModal.style.display = 'none';
+				modals[indexNumber].style.display = '';
+				activeModal = modals[indexNumber];
+				clickedCard = cards[indexNumber];
+			}
+		}
+
+			//Check if 'next' was clicked. Then hide/show appropriate modals
+		if (target.className === 'modal-next btn') {
+			if(indexNumber !== modals.length - 1) {
+				indexNumber += 1;
+				activeModal.style.display = 'none';
+				modals[indexNumber].style.display = '';
+				activeModal = modals[indexNumber];
+				clickedCard = cards[indexNumber];
+			}
 		}
 	}
+});
 
-		//Check if 'next' was clicked. Then hide/show appropriate modals
-	if (target.className === 'modal-next btn') {
-		if(indexNumber !== modals.length - 1) {
-			indexNumber += 1;
-			activeModal.style.display = 'none';
-			modals[indexNumber].style.display = '';
-			activeModal = modals[indexNumber];
-			clickedCard = cards[indexNumber];
-		}
-	}
+//Listener on form element
+form.addEventListener('submit', e => {
+	e.preventDefault();
+	console.log('worked');
 });
