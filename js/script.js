@@ -13,7 +13,7 @@ const users = fetch(randomUserURL)
 	.catch(error => console.error(error));
 
 
-//Listener on galleryDiv to listen for click on any part of a card. Displays proper modal 
+//Listen for click on any part of a card. Displays proper modal 
  galleryDiv.addEventListener('click', e => {
   modals = document.querySelectorAll('.modal-container');
   const target = e.target;
@@ -37,11 +37,17 @@ const users = fetch(randomUserURL)
 	 };
 });
 
-//Listener on the body
-//Check what tagnames or class names are 
+//Listener on the body used for clicks on Modal window
 body.addEventListener('click', e => {
 	const target = e.target;
+		//Check if the 'close window' button was clicked
 	if (target.tagName === 'STRONG' || target.className === 'modal-close-btn') {
 		activeModal.style.display = 'none';
+	}
+	if (target.className === 'modal-prev btn') {
+		console.log('PREVIOUS');
+	}
+	if (target.className === 'modal-next btn') {
+		console.log('NEXT');
 	}
 });

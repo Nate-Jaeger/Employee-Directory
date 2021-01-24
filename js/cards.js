@@ -5,7 +5,7 @@
 //Create cards for each random user
 const createUserCard = array => {
 	//Used to identify which card to select
-	let i = 0;
+	let i = array.length - 1;
 	array.map( user => {
 		let html = `
 		<div class="card ${i}">
@@ -20,7 +20,7 @@ const createUserCard = array => {
 		</div>`;
 			
 		galleryDiv.insertAdjacentHTML('beforeend', html);
-		++i;
+		--i;
 	});
 }
 
@@ -45,8 +45,13 @@ const createModal = array => {
 					<p class="modal-text">Birthday: ${DOB}</p>
 				</div>
 			</div>
+
+			<div class="modal-btn-container">
+				<button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
+				<button type="button" id="modal-next" class="modal-next btn">Next</button>
+         </div>
 		</div>`;
 	
-		body.insertAdjacentHTML('beforeend', html);
+		galleryDiv.insertAdjacentHTML('afterend', html);
 	});
 }
