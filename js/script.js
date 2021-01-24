@@ -57,20 +57,22 @@ body.addEventListener('click', e => {
 		//Check if 'prev' was clicked. Then hide/show appropriate modals
 	if (target.className === 'modal-prev btn') {
 		if(indexNumber !== 0) {
+			indexNumber -= 1;
 			activeModal.style.display = 'none';
-			modals[indexNumber - 1].style.display = '';
-			activeModal = modals[indexNumber - 1];
-			clickedCard = cards[indexNumber - 1];
+			modals[indexNumber].style.display = '';
+			activeModal = modals[indexNumber];
+			clickedCard = cards[indexNumber];
 		}
 	}
 
 		//Check if 'next' was clicked. Then hide/show appropriate modals
 	if (target.className === 'modal-next btn') {
 		if(indexNumber !== modals.length - 1) {
+			indexNumber += 1;
 			activeModal.style.display = 'none';
-			modals[indexNumber + 1].style.display = '';
-			activeModal = modals[indexNumber + 1];
-			clickedCard = cards[indexNumber + 1];
+			modals[indexNumber].style.display = '';
+			activeModal = modals[indexNumber];
+			clickedCard = cards[indexNumber];
 		}
 	}
 });

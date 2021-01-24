@@ -4,7 +4,7 @@
 	
 //Create cards for each random user
 const createUserCard = array => {
-	//Used to identify which card to select
+	//Used as an index for cards and modals
 	let i = 0;
 	array.map( user => {
 		let html = `
@@ -55,3 +55,10 @@ const createModal = array => {
 		galleryDiv.insertAdjacentHTML('beforeend', html);
 	});
 }
+
+//Append search bar inside search-container div
+const searchBar = `<form action="#" method="get">
+<input type="search" id="search-input" class="search-input" placeholder="Search...">
+<input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">
+</form>`;
+document.querySelector('.search-container').insertAdjacentHTML('afterbegin', searchBar);
