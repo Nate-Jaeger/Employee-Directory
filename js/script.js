@@ -2,7 +2,7 @@ const randomUserURL = "https://randomuser.me/api/?results=12&nat=us";
 const galleryDiv = document.getElementById("gallery");
 const body = document.getElementsByTagName("body")[0];
 const form = document.getElementsByTagName("form")[0];
-//Defined in listener on galleryDiv / card functions
+//Defined after cards and modals have been added to document
 let modals;
 let cards;
 let activeModal;
@@ -29,7 +29,8 @@ galleryDiv.addEventListener("click", e => {
    const grandparent = e.target.parentElement.parentElement;
 
    if (target.className !== "gallery") {
-      //Check if target, parent, grandparent have the 'card' class. Use number class to display appropriate Modal
+		//Check if target, parent, grandparent have the 'card' class
+		//Use index number in card class to display appropriate Modal
       if (target.classList.contains("card")) {
          modals[target.classList[1]].style.display = "";
          activeModal = modals[target.classList[1]];
@@ -46,10 +47,10 @@ galleryDiv.addEventListener("click", e => {
    }
 });
 
-//Listener on the body used for clicks on Modal window
+//Listener on body used for clicks on Modal window
 body.addEventListener("click", e => {
       const target = e.target;
-      //Get the index number from the clicked card's classList
+      //Index number from the clicked card's classList
       let indexNumber = parseInt(clickedCard.classList[1]);
 
       //Check if the 'close window' button was clicked
@@ -97,5 +98,5 @@ form.addEventListener("submit", e => {
    });
 });
 
-//Stop propigation to the body when form element is clicked in the header
+//Stop propigation to the body's listener when form element is clicked in the header
 document.querySelector('header').addEventListener('click' , e => e.stopPropagation());
