@@ -87,17 +87,18 @@ header h1 {
     max-width: 360px;
     margin: 10px 10px 20px;
     padding: 10px;
-    background: rgba(245, 245, 245, 0.9);
-    border-radius: 0.25em;
-    border: 1px solid rgba(50, 50, 50, 0.3);
+    background: rgba(221, 221, 221);
+    border-radius: 0.3em;
+    border: 1px solid rgb(50, 50, 50);
     transition: .4s ease-out;
     overflow: hidden;
+    box-shadow: -5px 5px rgb(170, 170, 170);
 }
 
 .card-img {
     width: 95px;
     margin: 10px 15px auto 10px;
-    border-radius: 50%;
+    border-radius: 20%;
 }
 
 .card-info-container {
@@ -106,10 +107,12 @@ header h1 {
 
 .card-name {
     margin: 20px auto 0;
+    font-size: 1.5em;
 }
 
 .card-text {
-    font-size: 0.9em;
+    font-size: 0.95em;
+    font-weight: bold;
     color: rgba(50, 50, 50, 0.7);
     margin: 7px auto;
     transition: .4s ease-out;
@@ -130,7 +133,7 @@ header h1 {
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.575);
 }
 
 .modal {
@@ -166,9 +169,12 @@ header h1 {
 
 .modal-name {
     margin-bottom: 5px;
+    font-size: 1.5em;
 }
 
 .modal-text {
+    font-size: 0.95em;
+    font-weight: bold;
     color: rgba(50, 50, 50, 0.7);
     margin: 10px;
 }

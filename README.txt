@@ -9,4 +9,9 @@ Fetch 12 users using the RandomUser API
 	-Can search for and display found employees from shown list
 
 ### Style Changes
--
+-Changed card background color
+-Added box shadow to card elements
+-Bolded email and location fonts on cards
+-Changed border radius of pictures on cards
+-Made Modal name larger
+-Made modal info larger and bolder
