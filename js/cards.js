@@ -1,12 +1,10 @@
+/**
+ * Creates Card elements and appends them to the gallery
+ * @param {JSON} array The JSON data to use for card info
+ */
 
-const namesArray = [];
-/* <------------------->
-	CARD/MODAL FUNCTIONS
-	<-------------------> */
-	
-//Create cards for each random user
 const createUserCard = array => {
-	//Used as an index for cards and modals
+	//Used as an index for displaying modals
 	let i = 0;
 	array.map( user => {
 		let html = `
@@ -22,12 +20,16 @@ const createUserCard = array => {
 		</div>`;
 			
 		galleryDiv.insertAdjacentHTML('beforeend', html);
-		namesArray.push(`${user.name.first} ${user.name.last}`);
 		++i;
 	});
+	cards = document.querySelectorAll('.card');
 }
 
-//Create modal cards for all users, sets display to none
+/**
+ * Creates Modal elements and appends them to body
+ * @param {JSON} array JSON data to be used in populating Modal windows
+ */
+
 const createModal = array => {
 	
 	array.map( user => {
@@ -57,12 +59,12 @@ const createModal = array => {
 	
 		body.insertAdjacentHTML('beforeend', html);
 	});
+	modals = document.querySelectorAll('.modal-container');
 }
 
-//Append search bar inside search-container div
+//Append search bar inside search-container
 const searchBar = `<form action="#" method="get">
 <input type="search" id="search-input" class="search-input" placeholder="Search...">
 <input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">
 </form>`;
-const searchContainer = document.querySelector('.search-container');
-searchContainer.insertAdjacentHTML('afterbegin', searchBar);
+document.querySelector('.search-container').insertAdjacentHTML('afterbegin', searchBar);
