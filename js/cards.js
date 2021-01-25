@@ -1,10 +1,10 @@
 /**
  * Creates Card elements and appends them to the gallery
- * @param {JSON} array The JSON data to use for card info
+ * @param {JSON} array The JSON data to used to populate card elements
  */
 
 const createUserCard = array => {
-	//Used as an index for displaying modals
+	//Used as an index for displaying modals, added to card class
 	let i = 0;
 	array.map( user => {
 		let html = `
